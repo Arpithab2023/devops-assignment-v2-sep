@@ -111,14 +111,14 @@ jobs:
       - name: Update ECS service (staging)
         run: |
           aws ecs update-service \
-            --cluster ${{ env.ECS_CLUSTER }}-staging \
+            --cluster ${{ env.ECS_CLUSTER }} \
             --service ${{ env.ECS_SERVICE }} \
             --force-new-deployment
 
       - name: Wait for service stability
         run: |
           aws ecs wait services-stable \
-            --cluster ${{ env.ECS_CLUSTER }}-staging \
+            --cluster ${{ env.ECS_CLUSTER }} \
             --services ${{ env.ECS_SERVICE }}
 
   # ---------- Manual approval gate, then production ----------
@@ -138,14 +138,14 @@ jobs:
       - name: Update ECS service (production)
         run: |
           aws ecs update-service \
-            --cluster ${{ env.ECS_CLUSTER }}-production \
+            --cluster ${{ env.ECS_CLUSTER }} \
             --service ${{ env.ECS_SERVICE }} \
             --force-new-deployment
 
       - name: Wait for service stability
         run: |
           aws ecs wait services-stable \
-            --cluster ${{ env.ECS_CLUSTER }}-production \
+            --cluster ${{ env.ECS_CLUSTER }} \
             --services ${{ env.ECS_SERVICE }}
 
   # ---------- Notify on any failure ----------
