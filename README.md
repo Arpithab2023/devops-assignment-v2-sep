@@ -115,3 +115,4 @@ terraform apply tfplan
 - Centralized log shipping to OpenSearch/Datadog instead of relying solely on
   CloudWatch Logs Insights queries.
 - Real unit/integration tests in `app/` (currently placeholders — see Part 2 note).
+
